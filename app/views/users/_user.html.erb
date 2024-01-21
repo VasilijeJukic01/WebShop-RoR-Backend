@@ -1,32 +1,7 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
-    <strong>Password digest:</strong>
-    <%= user.password_digest %>
-  </p>
-
-  <p>
-    <strong>Remember digest:</strong>
-    <%= user.remember_digest %>
-  </p>
-
-  <p>
-    <strong>Admin:</strong>
-    <%= user.admin %>
-  </p>
-
-  <p>
-    <strong>Role:</strong>
-    <%= user.role %>
-  </p>
-
-</div>
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <%= link_to user.name, user %>
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

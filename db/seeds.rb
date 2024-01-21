@@ -9,7 +9,8 @@
 #   end
 
 User.create!(name:  "Vaske",
-             email: "example@railstutorial.org",
+             email: "vaske@testing.com",
              password:              "foobar",
              admin: true,
+             activated: true,
              password_confirmation: "foobar")
