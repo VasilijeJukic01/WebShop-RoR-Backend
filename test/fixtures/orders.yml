@@ -2,10 +2,8 @@
 
 one:
   user_id: 1
-  delivery_id: 1
   total_price: 1
 
 two:
   user_id: 1
-  delivery_id: 1
   total_price: 1

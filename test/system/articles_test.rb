@@ -16,7 +16,6 @@ class ArticlesTest < ApplicationSystemTestCase
 
     fill_in "Category", with: @article.category_id
     fill_in "Name", with: @article.name
-    fill_in "Order", with: @article.order_id
     fill_in "Price", with: @article.price
     click_on "Create Article"
 
@@ -30,7 +29,6 @@ class ArticlesTest < ApplicationSystemTestCase
 
     fill_in "Category", with: @article.category_id
     fill_in "Name", with: @article.name
-    fill_in "Order", with: @article.order_id
     fill_in "Price", with: @article.price
     click_on "Update Article"
 
