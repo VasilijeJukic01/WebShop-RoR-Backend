@@ -2,12 +2,10 @@
 
 one:
   category_id: 1
-  order_id: 1
   name: MyString
   price: 1
 
 two:
   category_id: 1
-  order_id: 1
   name: MyString
   price: 1

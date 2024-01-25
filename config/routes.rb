@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :order_articles
+
   root   "static_pages#home"
-  get    "/help",    to: "static_pages#help"
   get    "/signup",  to: "users#new"
   get    "/login",   to: "sessions#new"
   post   "/login",   to: "sessions#create"
@@ -9,8 +10,8 @@ Rails.application.routes.draw do
   resources :users, path: "admin/users"
   resources :account_activations, only: [:edit]
   resources :orders, path: "admin/orders"
-  resources :deliveries, path: "admin/deliveries"
   resources :articles, path: "admin/articles"
   resources :categories, path: "admin/categories"
   resources :stores, path: "admin/stores"
+  resources :order_articles, path: "admin/order_articles"
 end

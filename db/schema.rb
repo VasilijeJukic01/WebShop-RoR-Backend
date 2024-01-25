@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_09_174035) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_25_111150) do
   create_table "articles", force: :cascade do |t|
     t.integer "category_id"
-    t.integer "order_id"
     t.string "name"
     t.integer "price"
     t.datetime "created_at", null: false
@@ -26,10 +25,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_09_174035) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "deliveries", force: :cascade do |t|
-    t.date "delivery_date"
+  create_table "order_articles", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount"
+    t.integer "total_price"
+    t.index ["article_id"], name: "index_order_articles_on_article_id"
+    t.index ["order_id"], name: "index_order_articles_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -53,10 +57,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_09_174035) do
     t.string "remember_digest"
     t.boolean "admin"
     t.string "role"
-    t.string "activation_digest"
-    t.boolean "activated", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "activation_digest"
+    t.boolean "activated", default: false
   end
 
+  add_foreign_key "order_articles", "articles"
+  add_foreign_key "order_articles", "orders"
 end
