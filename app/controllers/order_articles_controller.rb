@@ -1,5 +1,7 @@
 class OrderArticlesController < ApplicationController
   before_action :set_order_article, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: [:create, :new]
+  before_action :admin_user, only: [:index, :show, :destroy, :edit, :update]
 
   # GET /order_articles or /order_articles.json
   def index
@@ -65,6 +67,6 @@ class OrderArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def order_article_params
-    params.require(:order_article).permit(:order_id, :article_id, :amount, :total_price)
+    params.require(:order_article).permit(:order_id, :article_id, :amount, :price)
   end
 end

@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: [:new, :create]
+  before_action :admin_user, only: [:index, :show, :destroy, :edit, :update]
 
   # GET /orders or /orders.json
   def index

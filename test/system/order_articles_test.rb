@@ -3,8 +3,6 @@ require "application_system_test_case"
 class OrderArticlesTest < ApplicationSystemTestCase
   setup do
     @order_article = order_articles(:one)
-    @order_article.amount = 5
-    @order_article.total_price = 500
   end
 
   test "visiting the index" do
@@ -16,8 +14,10 @@ class OrderArticlesTest < ApplicationSystemTestCase
     visit order_articles_url
     click_on "New order article"
 
+    fill_in "Order", with: @order_article.order_id
+    fill_in "Article", with: @order_article.article_id
     fill_in "Amount", with: @order_article.amount
-    fill_in "Total price", with: @order_article.total_price
+    fill_in "Price", with: @order_article.price
     click_on "Create Order article"
 
     assert_text "Order article was successfully created"
@@ -28,8 +28,10 @@ class OrderArticlesTest < ApplicationSystemTestCase
     visit order_article_url(@order_article)
     click_on "Edit this order article", match: :first
 
+    fill_in "Order", with: @order_article.order_id
+    fill_in "Article", with: @order_article.article_id
     fill_in "Amount", with: @order_article.amount
-    fill_in "Total price", with: @order_article.total_price
+    fill_in "Price", with: @order_article.price
     click_on "Update Order article"
 
     assert_text "Order article was successfully updated"
