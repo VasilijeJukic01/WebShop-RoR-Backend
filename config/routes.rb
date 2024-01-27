@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
 
-  resources :users, path: "admin/users"
+  resources :users, path: "api/users"
   resources :account_activations, only: [:edit]
-  resources :orders, path: "admin/orders"
-  resources :articles, path: "admin/articles"
-  resources :categories, path: "admin/categories"
-  resources :stores, path: "admin/stores"
-  resources :order_articles, path: "admin/order_articles"
+  resources :orders, path: "api/orders"
+  resources :articles, path: "api/articles"
+  resources :categories, path: "api/categories"
+  resources :stores, path: "api/stores"
+  resources :order_articles, path: "api/order_articles"
 end
